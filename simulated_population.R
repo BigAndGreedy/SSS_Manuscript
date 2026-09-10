@@ -343,7 +343,7 @@ jt_MSE_la = rand_twoPhase_simPops(P, N, sim_pars = jt_pars2, samp_pars = pars_la
 
 jt_MSEs = sim_pop_stats(jt_MSE_sm, jt_MSE_me, jt_MSE_la)
 
-write.csv(jt_MSEs, "./result_files/jt_MSEs.csv", row.names = F)
+write.csv(jt_MSEs, "./result_files/jt_MSEs.csv", row.names = F) #
 
 
 rm(jt_MSE_sm,jt_MSE_me, jt_MSE_la)
@@ -360,7 +360,7 @@ mn_MSE_me = rand_twoPhase_simPops(P, N, sim_pars = mn_pars2, samp_pars = pars_me
 mn_MSE_la = rand_twoPhase_simPops(P, N, sim_pars = mn_pars2, samp_pars = pars_large)
 
 mn_MSEs = sim_pop_stats(mn_MSE_sm, mn_MSE_me, mn_MSE_la)
-write.csv(mn_MSEs, "./result_files/mn_MSEs.csv")
+write.csv(mn_MSEs, "./result_files/mn_MSEs.csv") #
 
 
 rm(mn_MSE_sm, mn_MSE_me, mn_MSE_la)
