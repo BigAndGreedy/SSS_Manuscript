@@ -360,7 +360,7 @@ mn_MSE_me = rand_twoPhase_simPops(P, N, sim_pars = mn_pars2, samp_pars = pars_me
 mn_MSE_la = rand_twoPhase_simPops(P, N, sim_pars = mn_pars2, samp_pars = pars_large)
 
 mn_MSEs = sim_pop_stats(mn_MSE_sm, mn_MSE_me, mn_MSE_la)
-write.csv(mn_MSEs, "./result_files/mn_MSEs.csv") #
+write.csv(mn_MSEs, "./result_files/mn_MSEs.csv", row.names = F) #
 
 
 rm(mn_MSE_sm, mn_MSE_me, mn_MSE_la)
@@ -377,7 +377,7 @@ s3_MSE_me = rand_twoPhase_simPops(P, N, sim_pars = system3_pars, samp_pars = par
 s3_MSE_la = rand_twoPhase_simPops(P, N, sim_pars = system3_pars, samp_pars = pars_large)
 
 s3_MSEs = sim_pop_stats(s3_MSE_sm, s3_MSE_me, s3_MSE_la)
-write.csv(s3_MSEs, "./result_files/s3_MSEs.csv")
+write.csv(s3_MSEs, "./result_files/s3_MSEs.csv", row.names = F) #
 
 
 rm(s3_MSE_sm, s3_MSE_me, s3_MSE_la)
