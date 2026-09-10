@@ -394,7 +394,7 @@ s4_MSE_me = rand_twoPhase_simPops(P, N, sim_pars = system4_pars, samp_pars = par
 s4_MSE_la = rand_twoPhase_simPops(P, N, sim_pars = system4_pars, samp_pars = pars_large)
 
 s4_MSEs = sim_pop_stats(s4_MSE_sm, s4_MSE_me, s4_MSE_la)
-write.csv(s4_MSEs, "./result_files/s4_MSEs.csv")
+write.csv(s4_MSEs, "./result_files/s4_MSEs.csv", row.names = F) #
 
 rm(s4_MSE_sm, s4_MSE_me, s4_MSE_la)
 

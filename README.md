@@ -24,6 +24,18 @@ Loading libraries and importing data files
 
 Code used to create simulated populations of bigmouth buffalo and compare random/two-phase sampling of those populations. Defines functions for simulating populations of bigmouth buffalo: successful_years(), VBGF(), length_age_norm(), and generate_pop(). Functions were defined to assist simulating samples, gen_pop_conv(), vbgf_funcs2(), and rand_twoPhase_simPops(). Sets of parameters used to simulate populations were defined as jt_pars2, mn_pars2, system3_pars, and system4_pars. Sets of parameters used to simulate samples of different sizes were defined as pars_small, pars_med, and pars_large.
 
+## PA_FA_comparison.R
+
+Code used to compare random, proportional allocation, and fixed allocation samples of empirical datasets and to report results as formatted tables.
+
+## RS_TP_comparison.R
+
+Code used to compare random and two-phase samples of empirical datasets and to report results as formatted tables.
+
+## catch_curve_analysis.R
+
+Code for conducting catch curve analysis on simulated samples from empirical datasets. Analyzes Type 1 and Type 2 samples on empirical datasets.
+
 # Result Files
 
 Files created to store results from long simulations
@@ -31,3 +43,4 @@ Files created to store results from long simulations
 ## jt_MSEs.csv (or mn/s3/s4_MSEs.csv)
 
 Stores results for average MSE of parameter estimates of random/two phase samples in simulated systems using jamestown/minnesota/system 3/system 4 parameters
+
