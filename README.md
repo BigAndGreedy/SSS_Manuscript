@@ -36,6 +36,10 @@ Code used to compare random and two-phase samples of empirical datasets and to r
 
 Code for conducting catch curve analysis on simulated samples from empirical datasets. Analyzes Type 1 and Type 2 samples on empirical datasets.
 
+## rho_variation.R
+
+Code used to vary rho in two-phase sample and create plots.  
+
 # Result Files
 
 Files created to store results from long simulations
