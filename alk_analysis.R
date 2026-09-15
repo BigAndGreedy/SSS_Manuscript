@@ -301,3 +301,76 @@ write.csv(s4_alk_mse, "./result_files/s4_alk_mses.csv")
 
 
 #############################
+
+# plotting
+#############################
+
+## function to plot one statistic for a particular system
+
+type_order = c("RS_sm", "ALK.100_sm", "ALK.WI_sm",
+               "RS_la", "ALK.100_la", "ALK.WI_la")
+
+type_labs = c(expression(RS[1]), expression(ALK[1.1]), expression(ALK[2.1]), 
+              expression(RS[2]), expression(ALK[1.2]), expression(ALK[2.2]))
+
+plot_avg_MSE_bars = function(df, stat, y_max)
+{
+  df %>% 
+    filter(Stat == stat) %>% 
+    mutate(Type = factor(Type, levels = type_order)) %>% 
+    ggplot(data = .) +
+    geom_col(aes(x = Type, y = Avg_MSE, color = Type, fill = Type)) +
+    theme_classic(base_size = 15) +
+    guides(fill = "none", color = "none") +
+    scale_y_continuous(expand = expansion(mult = 0), limits = c(0, y_max)) +
+    scale_x_discrete(labels = type_labs) +
+    ylab("Average MSE") 
+}
+# example plots, JT
+plot_avg_MSE_bars(jt_alk_mse, "L_inf", 3000)
+plot_avg_MSE_bars(jt_alk_mse, "k", 0.0065)
+plot_avg_MSE_bars(jt_alk_mse, "RCD", 0.08)
+
+## triple plot (all three stats at once) 
+
+library(cowplot)
+
+plot_triple_stats = function(df, ylim_Linf, ylim_k, ylim_RCD)
+{
+  pL = plot_avg_MSE_bars(df, "L_inf", ylim_Linf) + xlab("") + ylab("")
+  pK = plot_avg_MSE_bars(df, "k", ylim_k) + xlab("") + ylab("")
+  pR = plot_avg_MSE_bars(df, "RCD", ylim_RCD) + xlab("") + ylab("")
+  
+  aligned = align_plots(pR, pK, pL, align = "v")
+  
+  ggdraw(xlim = c(-0.1 ,1), ylim = c(-0.075,3)) + 
+    draw_plot(aligned[[1]], x = 0, y = 0) +
+    draw_plot(aligned[[2]], x = 0, y = 1) + 
+    draw_plot(aligned[[3]], x = 0, y = 2) +
+    draw_label(label = expression(L[infinity]), x = 0, y = 2.5) + 
+    draw_label(label = expression(k), x = 0, y = 1.5)  +
+    draw_label(label = expression(RCD), x = 0, y = 0.5) +
+    draw_label(label = "Sampling Type", x = 0.5, y = 0) + 
+    draw_label(label = "Average MSE by Statistic", x = -0.08, y = 1.5, angle = 90)
+}
+
+## saving plots:
+plot_triple_stats(jt_alk_mse, 3000, 0.0065, 0.08)
+
+save_plot("./plots/jt_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
+
+plot_triple_stats(mn_alk_mse, 220, 0.03, 0.025)
+
+save_plot("./plots/mn_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
+
+plot_triple_stats(s3_alk_mse, 425, 0.008, 0.025)
+
+save_plot("./plots/s3_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
+
+plot_triple_stats(s4_alk_mse, 300, 0.025, 0.08)
+
+save_plot("./plots/s4_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
+
+#############################
+
+
