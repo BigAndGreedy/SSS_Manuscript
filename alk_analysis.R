@@ -333,8 +333,6 @@ plot_avg_MSE_bars(jt_alk_mse, "RCD", 0.08)
 
 ## triple plot (all three stats at once) 
 
-library(cowplot)
-
 plot_triple_stats = function(df, ylim_Linf, ylim_k, ylim_RCD)
 {
   pL = plot_avg_MSE_bars(df, "L_inf", ylim_Linf) + xlab("") + ylab("")
@@ -370,6 +368,42 @@ save_plot("./plots/s3_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
 plot_triple_stats(s4_alk_mse, 300, 0.025, 0.08)
 
 save_plot("./plots/s4_avgMSE_quadbars.jpeg", last_plot(), ncol = 1, nrow = 3)
+
+
+## combine plots into one monster figure to use if need arises
+
+# triple_stats_no_labels = function(df, ylim_Linf, ylim_k, ylim_RCD)
+# {
+#   pL = plot_avg_MSE_bars(df, "L_inf", ylim_Linf) + xlab("") + ylab("") + 
+#     scale_x_discrete(labels = c("","","","","","")) 
+#   pK = plot_avg_MSE_bars(df, "k", ylim_k) + xlab("") + ylab("") + 
+#     scale_x_discrete(labels = c("","","","","","")) 
+#   pR = plot_avg_MSE_bars(df, "RCD", ylim_RCD) + xlab("") + ylab("") + 
+#     scale_x_discrete(labels = c("","","","","","")) 
+#   
+#   aligned = align_plots(pR, pK, pL, align = "v")
+#   
+#   ggdraw(xlim = c(0 ,1), ylim = c(0,3)) + 
+#     draw_plot(aligned[[1]], x = 0, y = 0) +
+#     draw_plot(aligned[[2]], x = 0, y = 1) + 
+#     draw_plot(aligned[[3]], x = 0, y = 2) 
+# }
+# 
+# bars_jt = triple_stats_no_labels(jt_alk_mse, 3000, 0.0065, 0.08)
+# bars_mn = triple_stats_no_labels(mn_alk_mse, 220, 0.03, 0.025)
+# bars_s3 = triple_stats_no_labels(s3_alk_mse, 425, 0.008, 0.025)
+# bars_s4 = triple_stats_no_labels(s4_alk_mse, 300, 0.025, 0.08)
+# 
+# bars_aligned = align_plots(bars_jt, bars_mn, bars_s3, bars_s4, align = "h")
+# 
+# ggdraw(xlim = c(0,4), ylim = c(0,1)) +
+#   draw_plot(bars_aligned[[1]], x=0, y=0) + 
+#   draw_plot(bars_aligned[[2]], x=1, y=0) +
+#   draw_plot(bars_aligned[[3]], x=2, y=0) + 
+#   draw_plot(bars_aligned[[4]], x=3, y=0)
+# 
+# plot_grid(bars_jt, NULL, bars_mn, bars_s3, bars_s4, 
+#           rel_widths = c(1, 0, 1, 1, 1), nrow = 1)
 
 #############################
 

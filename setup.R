@@ -6,6 +6,7 @@ library(purrr)
 
 library(ggplot2)
 library(gt)
+library(cowplot)
 
 library(FSA)
 
