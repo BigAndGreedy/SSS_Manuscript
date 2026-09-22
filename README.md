@@ -40,6 +40,10 @@ Code for conducting catch curve analysis on simulated samples from empirical dat
 
 Code used to vary rho in two-phase sample and create plots.  
 
+## alk_analysis.R
+
+Code to generate samples and construct ALKs for simulated populations. 
+
 # Result Files
 
 Files created to store results from long simulations

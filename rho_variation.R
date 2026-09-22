@@ -122,7 +122,7 @@ jt_rho_sd = generate_sd_rhos(
   R = replicates
 ) # be prepared to wait
 
-write.csv(jt_rho_sd, "./redux/jt_rho_sd.csv", row.names = F)
+#write.csv(jt_rho_sd, "./redux/jt_rho_sd.csv", row.names = F)
 
 # plot:
 x_breaks = seq(70, 200, 5)
@@ -198,7 +198,7 @@ mn_rho_sd = generate_sd_rhos(
   R = replicates
 )
 
-write.csv(mn_rho_sd, "./redux/mn_rho_sd.csv", row.names = F)
+#write.csv(mn_rho_sd, "./redux/mn_rho_sd.csv", row.names = F)
 
 # plot:
 
