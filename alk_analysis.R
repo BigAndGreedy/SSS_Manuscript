@@ -350,8 +350,8 @@ plot_triple_stats = function(df, ylim_Linf, ylim_k, ylim_RCD)
     draw_label(label = expression(L[infinity]), x = 0, y = 2.5, size = 15) + 
     draw_label(label = expression(k), x = 0, y = 1.5,, size = 15)  +
     draw_label(label = expression(RCD), x = 0, y = 0.5,, size = 15) +
-    draw_label(label = "Sampling Type", x = 0.5, y = 0) + 
-    draw_label(label = "Average MSE by Statistic", x = -0.08, y = 1.5, angle = 90)
+    draw_label(label = "Sampling type", x = 0.5, y = 0) + 
+    draw_label(label = "Average MSE by statistic", x = -0.08, y = 1.5, angle = 90)
 }
 
 ## saving plots:

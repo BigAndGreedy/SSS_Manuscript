@@ -254,14 +254,14 @@ prow = plot_grid(
 
 # titled_grid = plot_grid(title, prow, ncol = 1, rel_heights = c(0.1,1))
 
-y.grob = textGrob("Estimated Median SD (years)", gp=gpar(fontsize=15), rot=90)
+y.grob = textGrob("Estimated median SD (years)", gp=gpar(fontsize=15), rot=90)
 
-x.grob = textGrob("Preliminary Sample Size", gp=gpar(fontsize=15))
+x.grob = textGrob("Preliminary sample size", gp=gpar(fontsize=15))
 
 g = grid.arrange(
   arrangeGrob(prow, left = y.grob, bottom = x.grob)
 )
 
 s = 6
-#ggsave("../figures/double_rho_sds.png", g, width = 2*s, height = 1*s, dpi = 300)
+ggsave("../figures/double_rho_sds.png", g, width = 2*s, height = 1*s, dpi = 300)
 
