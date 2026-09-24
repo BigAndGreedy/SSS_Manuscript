@@ -399,3 +399,49 @@ write.csv(s4_MSEs, "./result_files/s4_MSEs.csv", row.names = F) #
 rm(s4_MSE_sm, s4_MSE_me, s4_MSE_la)
 
 #############
+
+# Code to determine how often simulated populations have convergent VBGFs
+#  (figure referenced in manuscript)
+#############
+
+did_pop_conv = function(pars)
+{
+  # generate pop'ns until it has convergent male & female VBGFs
+  pop = generate_pop(777, pars) # the choice of N doesnt matter for convergence
+  
+  m_conv = fit_VBGF(pop, "M")$Converged
+  fm_conv = fit_VBGF(pop, "F")$Converged
+  
+  if(m_conv == 1 & fm_conv == 1)
+  {
+    return(TRUE)
+  }
+
+  return(FALSE)
+}
+
+# generate 100 populations from each set of parameters
+
+iterations = 100
+
+convergences = matrix(nrow = iterations, ncol = 4) %>% data.frame()
+
+set.seed(447)
+
+for(i in 1:iterations)
+{
+  convergences[i, 1] = did_pop_conv(jt_pars2)
+  convergences[i, 2] = did_pop_conv(mn_pars2)
+  convergences[i, 3] = did_pop_conv(system3_pars)
+  convergences[i, 4] = did_pop_conv(system4_pars)
+  cat("Iteration", i, "/", iterations, "\n")
+}
+
+colnames(convergences) = c("jt","mn","s3","s4")
+
+convergences %>% 
+  pivot_longer(cols = everything()) %>% 
+  dplyr::filter(value == F)
+
+
+#############
