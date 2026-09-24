@@ -52,3 +52,11 @@ Files created to store results from long simulations
 
 Stores results for average MSE of parameter estimates of random/two phase samples in simulated systems using jamestown/minnesota/system 3/system 4 parameters
 
+## jt_rho_sd.csv (or mn_rho_sd.csv)
+
+Results for SD of median age in two-phase sampling by rho, in jamestown or mn files
+
+## jt_alk_mses.csv (or mn/s3/s4)
+
+Stores results for average MSE of parameter estimates of random/ALK samples in simulated systems using jamestown/minnesota/system 3/system 4 parameters
+
