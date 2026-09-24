@@ -128,7 +128,7 @@ jt_rho_sd = generate_sd_rhos(
 x_breaks = seq(70, 200, 5)
 x_labs = if_else(x_breaks %% 10 == 0, as.character(x_breaks), "")
 
-ggplot(data = jt_rho_sd) +
+jt_rho_sd_plot = ggplot(data = jt_rho_sd) +
   theme_classic() +
   geom_hline(yintercept = jt_rand_medSD, linetype = "dashed", color = "#E88717") +
   geom_hline(yintercept = jt_PA_medSD, linetype = "dashed", color = "#1778E8") +
@@ -148,7 +148,10 @@ ggplot(data = jt_rho_sd) +
   ggtitle("Estimated SD of Sample Median Age in Two-Phase Samples",
           subtitle = paste("Samples from Jamestown Reservoir data, R =", replicates)) +
   theme(plot.title = element_text(hjust =0.5),
-        plot.subtitle = element_text(hjust =0.5)) 
+        plot.subtitle = element_text(hjust =0.5),
+        axis.text.x = element_text(vjust = 1, hjust =1, angle = 45, size = 15, color = "black"),
+        axis.text.y = element_text(size = 15, color = "black"))
+
 
 #ggsave(filename = "./redux/figs/jt_rho_sd_plot.png", dpi = 300)
 
@@ -202,7 +205,7 @@ mn_rho_sd = generate_sd_rhos(
 
 # plot:
 
-ggplot(data = mn_rho_sd) +
+mn_rho_sd_plot = ggplot(data = mn_rho_sd) +
   theme_classic() +
   geom_hline(yintercept = mn_rand_medSD, linetype = "dashed", color = "#E88717") +
   geom_hline(yintercept = mn_PA_medSD, linetype = "dashed", color = "#1778E8") +
@@ -221,8 +224,10 @@ ggplot(data = mn_rho_sd) +
   ggtitle("Estimated SD of Sample Median Age in Two-Phase Samples",
           subtitle = paste("Samples from Western Minnesota data, R =", replicates)) +
   theme(plot.title = element_text(hjust =0.5),
-        plot.subtitle = element_text(hjust =0.5)) ->
-  mn_rho_sd_plot
+        plot.subtitle = element_text(hjust =0.5), 
+        axis.text.x = element_text(vjust = 1, hjust =1, angle = 45, size = 15, color = "black"),
+        axis.text.y = element_text(size = 15, color = "black", )) 
+ 
 
 #ggsave(plot = mn_rho_sd_plot, filename = "./redux/figs/mn_rho_sd_plot.png", dpi = 300)
 
@@ -257,6 +262,6 @@ g = grid.arrange(
   arrangeGrob(prow, left = y.grob, bottom = x.grob)
 )
 
-s = 5
-#ggsave("./redux/figs/double_rho_sds.png", g, width = 2*s, height = 1*s, dpi = 300)
+s = 6
+#ggsave("../figures/double_rho_sds.png", g, width = 2*s, height = 1*s, dpi = 300)
 
