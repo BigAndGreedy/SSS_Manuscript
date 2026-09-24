@@ -324,7 +324,9 @@ plot_avg_MSE_bars = function(df, stat, y_max)
     guides(fill = "none", color = "none") +
     scale_y_continuous(expand = expansion(mult = 0), limits = c(0, y_max)) +
     scale_x_discrete(labels = type_labs) +
-    ylab("Average MSE") 
+    ylab("Average MSE")  +
+    theme(axis.text.x = element_text(vjust = 1, size = 15, color = "black"),
+          axis.text.y = element_text(size = 15, color = "black"))
 }
 # example plots, JT
 plot_avg_MSE_bars(jt_alk_mse, "L_inf", 3000)
@@ -345,9 +347,9 @@ plot_triple_stats = function(df, ylim_Linf, ylim_k, ylim_RCD)
     draw_plot(aligned[[1]], x = 0, y = 0) +
     draw_plot(aligned[[2]], x = 0, y = 1) + 
     draw_plot(aligned[[3]], x = 0, y = 2) +
-    draw_label(label = expression(L[infinity]), x = 0, y = 2.5) + 
-    draw_label(label = expression(k), x = 0, y = 1.5)  +
-    draw_label(label = expression(RCD), x = 0, y = 0.5) +
+    draw_label(label = expression(L[infinity]), x = 0, y = 2.5, size = 15) + 
+    draw_label(label = expression(k), x = 0, y = 1.5,, size = 15)  +
+    draw_label(label = expression(RCD), x = 0, y = 0.5,, size = 15) +
     draw_label(label = "Sampling Type", x = 0.5, y = 0) + 
     draw_label(label = "Average MSE by Statistic", x = -0.08, y = 1.5, angle = 90)
 }
